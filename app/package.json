@@ -1,0 +1,14 @@
+{
+  "name": "memory-place-specs",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node tools/generate-memory-place-data.mjs",
+    "validate": "node tools/validate-memory-place.mjs",
+    "render": "node tools/render-memory-place.mjs",
+    "preview": "npm run validate && npm run generate && npm run render",
+    "test": "npx -y tsx tests/core.test.mjs",
+    "check": "npm run preview && npm test"
+  }
+}

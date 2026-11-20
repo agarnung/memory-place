@@ -1,0 +1,53 @@
+- !<AssetImportMetadata/f4088137-c4f3-4fc7-91e2-a6724dcff30b>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 3a8b50b6-24ff-41d0-a52d-c0e8e845dd31
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 3a8b50b6-24ff-41d0-a52d-c0e8e845dd31
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 338a0423-659b-42f7-aa01-e44e4dc2a7e7
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/338a0423-659b-42f7-aa01-e44e4dc2a7e7>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 7b21bcc5-7393-4550-b5ff-f56a1d5dbf49
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    debugColliders: false
+    font: false
+    panelRoot: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - panelRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      debugColliders: false
+      font: !<reference.Font> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input SceneObject panelRoot
+    - // @input bool debugColliders
+    - // @input Asset.Font font
