@@ -1,0 +1,71 @@
+- !<AssetImportMetadata/fd9fb838-b544-4a31-ae4a-b7cebfaaff71>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> e604aff5-61fc-4f80-94c2-19516cc19893
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> e604aff5-61fc-4f80-94c2-19516cc19893
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> d2edddf3-9113-4bff-a9dd-d8bc3b9671c2
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/d2edddf3-9113-4bff-a9dd-d8bc3b9671c2>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  RunInEditor: false
+  ComponentUid: 93a434ea-74ce-4888-95ac-b7f6fd46fde8
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    anchorRoot: false
+    boxMesh: false
+    coneMesh: false
+    cylinderMesh: false
+    debugColliders: false
+    placeMaterial: false
+    pyramidMesh: false
+    sphereMesh: false
+    ui: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - ui: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      anchorRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      debugColliders: false
+      boxMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
+      sphereMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
+      cylinderMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
+      coneMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
+      pyramidMesh: !<reference.RenderMesh> 00000000-0000-0000-0000-000000000000
+      placeMaterial: !<reference.Material> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType_1 ui
+    - // @input SceneObject anchorRoot
+    - // @input bool debugColliders
+    - // @input Asset.RenderMesh boxMesh
+    - // @input Asset.RenderMesh sphereMesh
+    - // @input Asset.RenderMesh cylinderMesh
+    - // @input Asset.RenderMesh coneMesh
+    - // @input Asset.RenderMesh pyramidMesh
+    - // @input Asset.Material placeMaterial

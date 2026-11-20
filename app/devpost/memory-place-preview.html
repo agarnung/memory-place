@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Memory Place — spatial preview</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 32px;
+      background: #07080B;
+      color: #F3F5F9;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    }
+    h1 { margin: 0 0 4px; font-size: 28px; letter-spacing: -0.03em; }
+    .intro { margin: 0 0 8px; color: #9AA4B8; font-size: 14px; max-width: 760px; }
+    .safety { margin: 0 0 24px; color: #FFD166; font-size: 13px; max-width: 760px; }
+    .map { margin-bottom: 24px; padding: 12px; border: 1px solid #252A36; border-radius: 20px; background: #10131A; }
+    svg { display: block; width: 100%; height: auto; }
+    .grid-line { stroke: #1C2230; stroke-width: 1; }
+    .path { fill: none; stroke: #FFD166; stroke-width: 2; stroke-dasharray: 5 8; opacity: 0.7; }
+    .anchor-label { fill: #C8D0DE; font: 600 12px ui-monospace, monospace; text-anchor: middle; }
+    .number { fill: #07080B; font: 700 10px ui-monospace, monospace; text-anchor: middle; }
+    .axis { fill: #5F6B82; font: 500 10px ui-monospace, monospace; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; }
+    .card { padding: 16px; border: 1px solid #252A36; border-left: 3px solid var(--accent); border-radius: 16px; background: #10131A; }
+    .card header { display: flex; align-items: center; gap: 12px; }
+    .card h2 { margin: 0; font-size: 17px; }
+    .card h2 span { color: #9AA4B8; font-size: 13px; font-weight: 500; }
+    .card header p { margin: 2px 0 0; color: #9AA4B8; font-size: 12px; }
+    .index { color: var(--accent); font: 700 12px ui-monospace, monospace; }
+    .shape { margin-left: auto; color: var(--accent); font: 600 10px ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.08em; }
+    ol { margin: 12px 0 0; padding-left: 18px; }
+    li { margin: 12px 0; }
+    h3 { margin: 0; font-size: 14px; }
+    .prompt { margin: 4px 0 0; font-size: 14px; line-height: 1.45; }
+    .prompt-en { margin: 2px 0 0; color: #9AA4B8; font-size: 12px; line-height: 1.4; }
+    .cue { margin: 4px 0 0; color: #FFD166; font-size: 12px; }
+    details { margin-top: 6px; color: #C8D0DE; font-size: 12px; }
+    summary { cursor: pointer; color: #7F8AA3; }
+    details p { margin: 6px 0; }
+  </style>
+</head>
+<body>
+  <h1>Memory Place — spatial preview</h1>
+  <p class="intro">A gentle reminiscence space for older adults living with mild cognitive impairment or Alzheimer's, used with a caregiver. One familiar place at a time; no scoring, no timers, no failure states.</p>
+  <p class="safety">Not a medical device. No diagnosis, treatment, recording, or identification. Use with a caregiver.</p>
+  <section class="map">
+    <svg viewBox="0 0 900 620" role="img" aria-label="Top-down map of six familiar places">
+      <rect width="900" height="620" fill="#0B0D12" />
+      <line x1="60" y1="40" x2="60" y2="580" class="grid-line" /><line x1="138" y1="40" x2="138" y2="580" class="grid-line" /><line x1="216" y1="40" x2="216" y2="580" class="grid-line" /><line x1="294" y1="40" x2="294" y2="580" class="grid-line" /><line x1="372" y1="40" x2="372" y2="580" class="grid-line" /><line x1="450" y1="40" x2="450" y2="580" class="grid-line" /><line x1="528" y1="40" x2="528" y2="580" class="grid-line" /><line x1="606" y1="40" x2="606" y2="580" class="grid-line" /><line x1="684" y1="40" x2="684" y2="580" class="grid-line" /><line x1="762" y1="40" x2="762" y2="580" class="grid-line" /><line x1="840" y1="40" x2="840" y2="580" class="grid-line" />
+      <line x1="40" y1="40" x2="860" y2="40" class="grid-line" /><line x1="40" y1="112" x2="860" y2="112" class="grid-line" /><line x1="40" y1="184" x2="860" y2="184" class="grid-line" /><line x1="40" y1="256" x2="860" y2="256" class="grid-line" /><line x1="40" y1="328" x2="860" y2="328" class="grid-line" /><line x1="40" y1="400" x2="860" y2="400" class="grid-line" /><line x1="40" y1="472" x2="860" y2="472" class="grid-line" /><line x1="40" y1="544" x2="860" y2="544" class="grid-line" />
+      <circle cx="450" cy="330" r="286" fill="none" stroke="#252A36" stroke-width="1.5" />
+      <circle cx="450" cy="330" r="14" fill="#F3F5F9" fill-opacity="0.9" />
+      <text x="450" y="364" class="axis">YOU</text>
+      <polyline points="202.28000000000003,187 281.91999999999996,98.66999999999999 390.6,50.26999999999998 509.4,50.26999999999998 618.08,98.66999999999999 697.72,187" class="path" />
+      
+    <g class="anchor">
+      <circle cx="202.28000000000003" cy="187" r="26" fill="#FFD166" fill-opacity="0.16" stroke="#FFD166" stroke-width="2" />
+      <circle cx="202.28000000000003" cy="187" r="9" fill="#FFD166" />
+      <text x="202.28000000000003" y="191" class="number">1</text>
+      <text x="202.28000000000003" y="157" class="anchor-label">Home</text>
+    </g>
+  
+    <g class="anchor">
+      <circle cx="281.91999999999996" cy="98.66999999999999" r="26" fill="#FF8FA3" fill-opacity="0.16" stroke="#FF8FA3" stroke-width="2" />
+      <circle cx="281.91999999999996" cy="98.66999999999999" r="9" fill="#FF8FA3" />
+      <text x="281.91999999999996" y="102.66999999999999" class="number">2</text>
+      <text x="281.91999999999996" y="68.66999999999999" class="anchor-label">Family</text>
+    </g>
+  
+    <g class="anchor">
+      <circle cx="390.6" cy="50.26999999999998" r="26" fill="#9775FA" fill-opacity="0.16" stroke="#9775FA" stroke-width="2" />
+      <circle cx="390.6" cy="50.26999999999998" r="9" fill="#9775FA" />
+      <text x="390.6" y="54.26999999999998" class="number">3</text>
+      <text x="390.6" y="20.269999999999982" class="anchor-label">Music</text>
+    </g>
+  
+    <g class="anchor">
+      <circle cx="509.4" cy="50.26999999999998" r="26" fill="#4DABF7" fill-opacity="0.16" stroke="#4DABF7" stroke-width="2" />
+      <circle cx="509.4" cy="50.26999999999998" r="9" fill="#4DABF7" />
+      <text x="509.4" y="54.26999999999998" class="number">4</text>
+      <text x="509.4" y="20.269999999999982" class="anchor-label">Work</text>
+    </g>
+  
+    <g class="anchor">
+      <circle cx="618.08" cy="98.66999999999999" r="26" fill="#38D9A9" fill-opacity="0.16" stroke="#38D9A9" stroke-width="2" />
+      <circle cx="618.08" cy="98.66999999999999" r="9" fill="#38D9A9" />
+      <text x="618.08" y="102.66999999999999" class="number">5</text>
+      <text x="618.08" y="68.66999999999999" class="anchor-label">Garden</text>
+    </g>
+  
+    <g class="anchor">
+      <circle cx="697.72" cy="187" r="26" fill="#FFA94D" fill-opacity="0.16" stroke="#FFA94D" stroke-width="2" />
+      <circle cx="697.72" cy="187" r="9" fill="#FFA94D" />
+      <text x="697.72" y="191" class="number">6</text>
+      <text x="697.72" y="157" class="anchor-label">Travel</text>
+    </g>
+  
+      <text x="450" y="602" class="axis">2.6 m memory ring · choose a familiar place · pinch to open</text>
+    </svg>
+  </section>
+  <main class="cards">
+    
+    <article class="card" style="--accent: #FFD166">
+      <header>
+        <span class="index">01</span>
+        <div>
+          <h2>Home <span>Casa</span></h2>
+          <p>Familiar places</p>
+        </div>
+        <span class="shape">house</span>
+      </header>
+      <ol>
+    <li>
+      <h3>The front door</h3>
+      <p class="prompt">¿De qué color era la puerta de la casa donde creciste?</p>
+      <p class="prompt-en">What colour was the front door of the home you grew up in?</p>
+      <p class="cue">Una puerta de madera y el sonido de unas llaves.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Había un felpudo, un número o una bienvenida?</p>
+        <p>Was there a doormat, a number, or a welcome sign?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>The kitchen table</h3>
+      <p class="prompt">¿Qué solía haber sobre la mesa de tu cocina?</p>
+      <p class="prompt-en">What was usually on your kitchen table?</p>
+      <p class="cue">Una taza caliente y el olor a pan.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Quién se sentaba en cada sitio?</p>
+        <p>Who sat in each place?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>The living room radio</h3>
+      <p class="prompt">¿Qué sonaba en la radio o en la televisión del salón?</p>
+      <p class="prompt-en">What played on the radio or television in the living room?</p>
+      <p class="cue">Una sintonía antigua y una voz familiar.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿A qué hora solíais escucharlo?</p>
+        <p>What time did you usually listen?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>The bedroom window</h3>
+      <p class="prompt">¿Qué se veía desde la ventana de tu dormitorio?</p>
+      <p class="prompt-en">What could you see from your bedroom window?</p>
+      <p class="cue">Luz de la mañana y el sonido de la calle.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Qué veías al despertar?</p>
+        <p>What did you see when you woke up?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>The favourite chair</h3>
+      <p class="prompt">¿Dónde estaba tu silla o sofá favorito?</p>
+      <p class="prompt-en">Where was your favourite chair or sofa?</p>
+      <p class="cue">Una manta suave y una luz cálida.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Qué solías hacer allí?</p>
+        <p>What did you usually do there?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>The garden gate</h3>
+      <p class="prompt">¿Cómo era la entrada o el jardín de tu casa?</p>
+      <p class="prompt-en">What was the entrance or garden of your home like?</p>
+      <p class="cue">El chirrido de una verja y olor a hierba.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Había flores o un camino especial?</p>
+        <p>Were there flowers or a special path?</p>
+      </details>
+    </li>
+  </ol>
+    </article>
+  
+    <article class="card" style="--accent: #FF8FA3">
+      <header>
+        <span class="index">02</span>
+        <div>
+          <h2>Family <span>Familia</span></h2>
+          <p>People and traditions</p>
+        </div>
+        <span class="shape">heart</span>
+      </header>
+      <ol>
+    <li>
+      <h3>The family meal</h3>
+      <p class="prompt">¿Qué comida reunía a la familia en casa?</p>
+      <p class="prompt-en">What meal brought the family together at home?</p>
+      <p class="cue">El olor de un guiso y el ruido de platos.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Quién cocinaba y quién ponía la mesa?</p>
+        <p>Who cooked and who set the table?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>A family photo</h3>
+      <p class="prompt">¿Qué foto de familia recuerdas con más cariño?</p>
+      <p class="prompt-en">Which family photo do you remember most fondly?</p>
+      <p class="cue">Una foto en blanco y negro y una sonrisa.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Dónde estaba hecha y quién faltaba?</p>
+        <p>Where was it taken, and who was missing?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>A holiday tradition</h3>
+      <p class="prompt">¿Qué tradición se repetía cada año en tu familia?</p>
+      <p class="prompt-en">Which tradition did your family repeat every year?</p>
+      <p class="cue">Una canción, una mesa larga y una fecha señalada.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Qué era lo que más te gustaba de ese día?</p>
+        <p>What did you like most about that day?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>A family pet</h3>
+      <p class="prompt">¿Qué mascota vivió con tu familia?</p>
+      <p class="prompt-en">Which pet lived with your family?</p>
+      <p class="cue">El sonido de patas y un nombre repetido.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Dónde dormía y quién la cuidaba?</p>
+        <p>Where did it sleep, and who cared for it?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>A relative's laugh</h3>
+      <p class="prompt">¿De quién recuerdas una risa o una voz especial?</p>
+      <p class="prompt-en">Whose laugh or voice do you remember clearly?</p>
+      <p class="cue">Una risa contagiosa y una frase repetida.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Qué solía decir esa persona?</p>
+        <p>What did that person usually say?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>A Sunday routine</h3>
+      <p class="prompt">¿Cómo era un domingo típico en tu familia?</p>
+      <p class="prompt-en">What was a typical Sunday like in your family?</p>
+      <p class="cue">Café, periódico y una visita esperada.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Qué parte del domingo era tu favorita?</p>
+        <p>Which part of Sunday was your favourite?</p>
+      </details>
+    </li>
+  </ol>
+    </article>
+  
+    <article class="card" style="--accent: #9775FA">
+      <header>
+        <span class="index">03</span>
+        <div>
+          <h2>Music <span>Música</span></h2>
+          <p>Songs and sounds</p>
+        </div>
+        <span class="shape">note</span>
+      </header>
+      <ol>
+    <li>
+      <h3>The first favourite song</h3>
+      <p class="prompt">¿Cuál fue una de las primeras canciones que te gustaron?</p>
+      <p class="prompt-en">What was one of the first songs you loved?</p>
+      <p class="cue">Una melodía que todavía puedes tararear.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Dónde la escuchaste por primera vez?</p>
+        <p>Where did you first hear it?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>The wedding song</h3>
+      <p class="prompt">¿Qué canción suena en una boda o celebración de tu familia?</p>
+      <p class="prompt-en">Which song plays at a wedding or family celebration?</p>
+      <p class="cue">Una pista de baile y gente cantando.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Quién fue el primero en bailar?</p>
+        <p>Who danced first?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>The radio programme</h3>
+      <p class="prompt">¿Qué programa de radio o televisión escuchabas siempre?</p>
+      <p class="prompt-en">Which radio or television programme did you always listen to?</p>
+      <p class="cue">Una sintonía y una voz de locutor.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿A qué hora empezaba?</p>
+        <p>What time did it start?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>Dancing</h3>
+      <p class="prompt">¿Qué música te hacía bailar o cantar?</p>
+      <p class="prompt-en">What music made you dance or sing?</p>
+      <p class="cue">El ritmo y unas palmadas.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Con quién bailabas?</p>
+        <p>Who did you dance with?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>An instrument</h3>
+      <p class="prompt">¿Tocabas algún instrumento o conocías a alguien que lo tocara?</p>
+      <p class="prompt-en">Did you play an instrument, or did someone you know play one?</p>
+      <p class="cue">El tacto de las cuerdas o las teclas.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Qué canción tocaba esa persona?</p>
+        <p>What song did that person play?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>A concert</h3>
+      <p class="prompt">¿Recuerdas algún concierto o fiesta con música en directo?</p>
+      <p class="prompt-en">Do you remember a concert or party with live music?</p>
+      <p class="cue">Luces, aplausos y un escenario.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Con quién fuiste?</p>
+        <p>Who did you go with?</p>
+      </details>
+    </li>
+  </ol>
+    </article>
+  
+    <article class="card" style="--accent: #4DABF7">
+      <header>
+        <span class="index">04</span>
+        <div>
+          <h2>Work <span>Trabajo</span></h2>
+          <p>Daily life and skills</p>
+        </div>
+        <span class="shape">toolbox</span>
+      </header>
+      <ol>
+    <li>
+      <h3>The first job</h3>
+      <p class="prompt">¿Cuál fue tu primer trabajo o tu primera responsabilidad?</p>
+      <p class="prompt-en">What was your first job or first responsibility?</p>
+      <p class="cue">Un uniforme, una oficina o una herramienta.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Qué aprendiste allí?</p>
+        <p>What did you learn there?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>A work friend</h3>
+      <p class="prompt">¿Qué compañero o compañera de trabajo recuerdas con cariño?</p>
+      <p class="prompt-en">Which work colleague do you remember fondly?</p>
+      <p class="cue">Una taza de café y una broma compartida.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Qué costumbre teníais juntos?</p>
+        <p>What habit did you share?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>The daily commute</h3>
+      <p class="prompt">¿Cómo ibas al trabajo o a clase cada día?</p>
+      <p class="prompt-en">How did you travel to work or school each day?</p>
+      <p class="cue">Un autobús, un tren o una bicicleta.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Qué veías por el camino?</p>
+        <p>What did you see on the way?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>A tool you used</h3>
+      <p class="prompt">¿Qué herramienta u objeto usabas a diario en tu trabajo?</p>
+      <p class="prompt-en">Which tool or object did you use every day at work?</p>
+      <p class="cue">El peso en las manos y un sonido repetido.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Para qué servía exactamente?</p>
+        <p>What exactly was it used for?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>A proud moment</h3>
+      <p class="prompt">¿De qué momento de tu trabajo te sientes orgulloso?</p>
+      <p class="prompt-en">Which moment at work are you proud of?</p>
+      <p class="cue">Un aplauso, una firma o una foto.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Quién estaba contigo?</p>
+        <p>Who was with you?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>The lunch break</h3>
+      <p class="prompt">¿Dónde comías o descansabas durante el trabajo?</p>
+      <p class="prompt-en">Where did you eat or rest during work?</p>
+      <p class="cue">Un banco, un termo y una conversación.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Qué era lo mejor de esa pausa?</p>
+        <p>What was the best part of that break?</p>
+      </details>
+    </li>
+  </ol>
+    </article>
+  
+    <article class="card" style="--accent: #38D9A9">
+      <header>
+        <span class="index">05</span>
+        <div>
+          <h2>Garden <span>Jardín</span></h2>
+          <p>Nature and seasons</p>
+        </div>
+        <span class="shape">leaf</span>
+      </header>
+      <ol>
+    <li>
+      <h3>The flowers</h3>
+      <p class="prompt">¿Qué flores recuerdas de un jardín o una ventana?</p>
+      <p class="prompt-en">Which flowers do you remember from a garden or window?</p>
+      <p class="cue">Un color vivo y olor dulce.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Quién las cuidaba?</p>
+        <p>Who cared for them?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>The vegetable patch</h3>
+      <p class="prompt">¿Había un huerto o una planta que cuidarais?</p>
+      <p class="prompt-en">Was there a vegetable patch or a plant you cared for?</p>
+      <p class="cue">Tierra en las manos y olor a tomate.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Qué se recogía en verano?</p>
+        <p>What did you harvest in summer?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>A tree</h3>
+      <p class="prompt">¿Qué árbol recuerdas de tu calle o tu casa?</p>
+      <p class="prompt-en">Which tree do you remember from your street or home?</p>
+      <p class="cue">Sombra, hojas y el sonido del viento.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Qué hacías bajo ese árbol?</p>
+        <p>What did you do under that tree?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>The birds</h3>
+      <p class="prompt">¿Qué pájaros o animales veías en el jardín?</p>
+      <p class="prompt-en">Which birds or animals did you see in the garden?</p>
+      <p class="cue">Un canto al amanecer y una visita al comedero.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Los oías siempre a la misma hora?</p>
+        <p>Did you hear them at the same time each day?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>The weather</h3>
+      <p class="prompt">¿Qué tiempo recuerdas de una estación concreta?</p>
+      <p class="prompt-en">What weather do you remember from a particular season?</p>
+      <p class="cue">Lluvia en el cristal o sol en la cara.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Qué te gustaba hacer con ese tiempo?</p>
+        <p>What did you like to do in that weather?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>The bench</h3>
+      <p class="prompt">¿Dónde te sentabas a descansar al aire libre?</p>
+      <p class="prompt-en">Where did you sit and rest outdoors?</p>
+      <p class="cue">Madera, sombra y una vista tranquila.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Con quién compartías ese banco?</p>
+        <p>Who shared that bench with you?</p>
+      </details>
+    </li>
+  </ol>
+    </article>
+  
+    <article class="card" style="--accent: #FFA94D">
+      <header>
+        <span class="index">06</span>
+        <div>
+          <h2>Travel <span>Viajes</span></h2>
+          <p>Places and journeys</p>
+        </div>
+        <span class="shape">suitcase</span>
+      </header>
+      <ol>
+    <li>
+      <h3>The first trip</h3>
+      <p class="prompt">¿Cuál fue el primer viaje que recuerdas?</p>
+      <p class="prompt-en">What is the first trip you remember?</p>
+      <p class="cue">Una maleta, un billete y una llegada.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Qué fue lo primero que viste al llegar?</p>
+        <p>What was the first thing you saw on arrival?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>The seaside</h3>
+      <p class="prompt">¿Qué recuerdas de un día junto al mar?</p>
+      <p class="prompt-en">What do you remember from a day by the sea?</p>
+      <p class="cue">Olas, sal y un paseo largo.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Con quién estabas?</p>
+        <p>Who were you with?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>The mountains</h3>
+      <p class="prompt">¿Recuerdas un paisaje de montaña o un pueblo?</p>
+      <p class="prompt-en">Do you remember a mountain landscape or a village?</p>
+      <p class="cue">Aire frío, piedra y silencio.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Qué te sorprendió de ese lugar?</p>
+        <p>What surprised you about that place?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>A train or plane</h3>
+      <p class="prompt">¿Recuerdas un viaje en tren o en avión?</p>
+      <p class="prompt-en">Do you remember a journey by train or plane?</p>
+      <p class="cue">Una ventanilla y el ruido del motor.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿A dónde ibas?</p>
+        <p>Where were you going?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>A souvenir</h3>
+      <p class="prompt">¿Qué objeto guardas de un viaje?</p>
+      <p class="prompt-en">Which object do you keep from a trip?</p>
+      <p class="cue">Una piedra, una postal o una taza.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Dónde está ahora?</p>
+        <p>Where is it now?</p>
+      </details>
+    </li>
+  
+    <li>
+      <h3>A postcard</h3>
+      <p class="prompt">¿Qué postal o foto de un viaje te gusta mirar?</p>
+      <p class="prompt-en">Which postcard or travel photo do you like to look at?</p>
+      <p class="cue">Un sello, una firma y un mensaje corto.</p>
+      <details>
+        <summary>Follow-up and caregiver note</summary>
+        <p>¿Quién te la envió?</p>
+        <p>Who sent it to you?</p>
+      </details>
+    </li>
+  </ol>
+    </article>
+  
+  </main>
+</body>
+</html>

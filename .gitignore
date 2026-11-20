@@ -1,0 +1,23 @@
+app-interview/
+app-rulespace/
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Personal working notes and local setup (not part of the submission)
+/CLAUDE.md
+/CHECKLIST-ALEJANDRO.md
+/PLAN-ALEJANDRO.md
+/WINDOWS.md
+/scripts/
+/.claude/
+
+# Agent tooling generated inside the Lens Studio project
+app/.virtual-scene.json
+app/.virtual-scene.runtime.json
+app/Plugins/
+app/Packages/AiPreviewAgent*
+app/Packages/Bitmoji 3D.lsc
+app/Packages/Bitmoji 3D.lsc.meta
+app/.agents/
+app/devpost/submission-checklist.md

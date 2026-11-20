@@ -1,0 +1,569 @@
+import type { MemoryPlaceData } from "./MemoryPlaceCore";
+
+export const MEMORY_PLACE_DATA: MemoryPlaceData = {
+  "version": 1,
+  "title": "Memory Place",
+  "unit": "meters",
+  "audience": "Older adults living with mild cognitive impairment or Alzheimer's, together with a caregiver",
+  "safety": "Not a medical device. No diagnosis, treatment, recording, or identification. Use with a caregiver.",
+  "anchors": [
+    {
+      "id": "home",
+      "name": "Home",
+      "nameEs": "Casa",
+      "concept": "Familiar places",
+      "shape": "house",
+      "color": "#FFD166",
+      "position": [
+        -2.252,
+        1.15,
+        -1.3
+      ],
+      "cards": [
+        {
+          "id": "home-01",
+          "title": "The front door",
+          "titleEs": "La puerta de casa",
+          "prompt": "¿De qué color era la puerta de la casa donde creciste?",
+          "promptEn": "What colour was the front door of the home you grew up in?",
+          "sensoryCue": "Una puerta de madera y el sonido de unas llaves.",
+          "sensoryCueEn": "A wooden door and the sound of keys.",
+          "followUp": "¿Había un felpudo, un número o una bienvenida?",
+          "followUpEn": "Was there a doormat, a number, or a welcome sign?",
+          "stage": "early",
+          "domain": "home"
+        },
+        {
+          "id": "home-02",
+          "title": "The kitchen table",
+          "titleEs": "La mesa de la cocina",
+          "prompt": "¿Qué solía haber sobre la mesa de tu cocina?",
+          "promptEn": "What was usually on your kitchen table?",
+          "sensoryCue": "Una taza caliente y el olor a pan.",
+          "sensoryCueEn": "A warm cup and the smell of bread.",
+          "followUp": "¿Quién se sentaba en cada sitio?",
+          "followUpEn": "Who sat in each place?",
+          "stage": "early",
+          "domain": "home"
+        },
+        {
+          "id": "home-03",
+          "title": "The living room radio",
+          "titleEs": "La radio del salón",
+          "prompt": "¿Qué sonaba en la radio o en la televisión del salón?",
+          "promptEn": "What played on the radio or television in the living room?",
+          "sensoryCue": "Una sintonía antigua y una voz familiar.",
+          "sensoryCueEn": "An old jingle and a familiar voice.",
+          "followUp": "¿A qué hora solíais escucharlo?",
+          "followUpEn": "What time did you usually listen?",
+          "stage": "early",
+          "domain": "home"
+        },
+        {
+          "id": "home-04",
+          "title": "The bedroom window",
+          "titleEs": "La ventana del dormitorio",
+          "prompt": "¿Qué se veía desde la ventana de tu dormitorio?",
+          "promptEn": "What could you see from your bedroom window?",
+          "sensoryCue": "Luz de la mañana y el sonido de la calle.",
+          "sensoryCueEn": "Morning light and the sound of the street.",
+          "followUp": "¿Qué veías al despertar?",
+          "followUpEn": "What did you see when you woke up?",
+          "stage": "early",
+          "domain": "home"
+        },
+        {
+          "id": "home-05",
+          "title": "The favourite chair",
+          "titleEs": "La silla favorita",
+          "prompt": "¿Dónde estaba tu silla o sofá favorito?",
+          "promptEn": "Where was your favourite chair or sofa?",
+          "sensoryCue": "Una manta suave y una luz cálida.",
+          "sensoryCueEn": "A soft blanket and warm light.",
+          "followUp": "¿Qué solías hacer allí?",
+          "followUpEn": "What did you usually do there?",
+          "stage": "early",
+          "domain": "home"
+        },
+        {
+          "id": "home-06",
+          "title": "The garden gate",
+          "titleEs": "La verja del jardín",
+          "prompt": "¿Cómo era la entrada o el jardín de tu casa?",
+          "promptEn": "What was the entrance or garden of your home like?",
+          "sensoryCue": "El chirrido de una verja y olor a hierba.",
+          "sensoryCueEn": "The creak of a gate and the smell of grass.",
+          "followUp": "¿Había flores o un camino especial?",
+          "followUpEn": "Were there flowers or a special path?",
+          "stage": "early",
+          "domain": "home"
+        }
+      ]
+    },
+    {
+      "id": "family",
+      "name": "Family",
+      "nameEs": "Familia",
+      "concept": "People and traditions",
+      "shape": "heart",
+      "color": "#FF8FA3",
+      "position": [
+        -1.528,
+        1.1,
+        -2.103
+      ],
+      "cards": [
+        {
+          "id": "family-01",
+          "title": "The family meal",
+          "titleEs": "La comida familiar",
+          "prompt": "¿Qué comida reunía a la familia en casa?",
+          "promptEn": "What meal brought the family together at home?",
+          "sensoryCue": "El olor de un guiso y el ruido de platos.",
+          "sensoryCueEn": "The smell of a stew and the clatter of plates.",
+          "followUp": "¿Quién cocinaba y quién ponía la mesa?",
+          "followUpEn": "Who cooked and who set the table?",
+          "stage": "early",
+          "domain": "family"
+        },
+        {
+          "id": "family-02",
+          "title": "A family photo",
+          "titleEs": "Una foto de familia",
+          "prompt": "¿Qué foto de familia recuerdas con más cariño?",
+          "promptEn": "Which family photo do you remember most fondly?",
+          "sensoryCue": "Una foto en blanco y negro y una sonrisa.",
+          "sensoryCueEn": "A black-and-white photo and a smile.",
+          "followUp": "¿Dónde estaba hecha y quién faltaba?",
+          "followUpEn": "Where was it taken, and who was missing?",
+          "stage": "early",
+          "domain": "family"
+        },
+        {
+          "id": "family-03",
+          "title": "A holiday tradition",
+          "titleEs": "Una tradición de fiesta",
+          "prompt": "¿Qué tradición se repetía cada año en tu familia?",
+          "promptEn": "Which tradition did your family repeat every year?",
+          "sensoryCue": "Una canción, una mesa larga y una fecha señalada.",
+          "sensoryCueEn": "A song, a long table, and a special date.",
+          "followUp": "¿Qué era lo que más te gustaba de ese día?",
+          "followUpEn": "What did you like most about that day?",
+          "stage": "mid",
+          "domain": "family"
+        },
+        {
+          "id": "family-04",
+          "title": "A family pet",
+          "titleEs": "Una mascota de la familia",
+          "prompt": "¿Qué mascota vivió con tu familia?",
+          "promptEn": "Which pet lived with your family?",
+          "sensoryCue": "El sonido de patas y un nombre repetido.",
+          "sensoryCueEn": "The sound of paws and a repeated name.",
+          "followUp": "¿Dónde dormía y quién la cuidaba?",
+          "followUpEn": "Where did it sleep, and who cared for it?",
+          "stage": "mid",
+          "domain": "family"
+        },
+        {
+          "id": "family-05",
+          "title": "A relative's laugh",
+          "titleEs": "La risa de un familiar",
+          "prompt": "¿De quién recuerdas una risa o una voz especial?",
+          "promptEn": "Whose laugh or voice do you remember clearly?",
+          "sensoryCue": "Una risa contagiosa y una frase repetida.",
+          "sensoryCueEn": "A contagious laugh and a repeated phrase.",
+          "followUp": "¿Qué solía decir esa persona?",
+          "followUpEn": "What did that person usually say?",
+          "stage": "mid",
+          "domain": "family"
+        },
+        {
+          "id": "family-06",
+          "title": "A Sunday routine",
+          "titleEs": "Un domingo cualquiera",
+          "prompt": "¿Cómo era un domingo típico en tu familia?",
+          "promptEn": "What was a typical Sunday like in your family?",
+          "sensoryCue": "Café, periódico y una visita esperada.",
+          "sensoryCueEn": "Coffee, a newspaper, and an expected visit.",
+          "followUp": "¿Qué parte del domingo era tu favorita?",
+          "followUpEn": "Which part of Sunday was your favourite?",
+          "stage": "mid",
+          "domain": "family"
+        }
+      ]
+    },
+    {
+      "id": "music",
+      "name": "Music",
+      "nameEs": "Música",
+      "concept": "Songs and sounds",
+      "shape": "note",
+      "color": "#9775FA",
+      "position": [
+        -0.54,
+        1.2,
+        -2.543
+      ],
+      "cards": [
+        {
+          "id": "music-01",
+          "title": "The first favourite song",
+          "titleEs": "La primera canción favorita",
+          "prompt": "¿Cuál fue una de las primeras canciones que te gustaron?",
+          "promptEn": "What was one of the first songs you loved?",
+          "sensoryCue": "Una melodía que todavía puedes tararear.",
+          "sensoryCueEn": "A melody you can still hum.",
+          "followUp": "¿Dónde la escuchaste por primera vez?",
+          "followUpEn": "Where did you first hear it?",
+          "stage": "early",
+          "domain": "music"
+        },
+        {
+          "id": "music-02",
+          "title": "The wedding song",
+          "titleEs": "La canción de la boda",
+          "prompt": "¿Qué canción suena en una boda o celebración de tu familia?",
+          "promptEn": "Which song plays at a wedding or family celebration?",
+          "sensoryCue": "Una pista de baile y gente cantando.",
+          "sensoryCueEn": "A dance floor and people singing.",
+          "followUp": "¿Quién fue el primero en bailar?",
+          "followUpEn": "Who danced first?",
+          "stage": "mid",
+          "domain": "music"
+        },
+        {
+          "id": "music-03",
+          "title": "The radio programme",
+          "titleEs": "El programa de radio",
+          "prompt": "¿Qué programa de radio o televisión escuchabas siempre?",
+          "promptEn": "Which radio or television programme did you always listen to?",
+          "sensoryCue": "Una sintonía y una voz de locutor.",
+          "sensoryCueEn": "A jingle and a presenter's voice.",
+          "followUp": "¿A qué hora empezaba?",
+          "followUpEn": "What time did it start?",
+          "stage": "early",
+          "domain": "music"
+        },
+        {
+          "id": "music-04",
+          "title": "Dancing",
+          "titleEs": "Bailar",
+          "prompt": "¿Qué música te hacía bailar o cantar?",
+          "promptEn": "What music made you dance or sing?",
+          "sensoryCue": "El ritmo y unas palmadas.",
+          "sensoryCueEn": "The rhythm and clapping hands.",
+          "followUp": "¿Con quién bailabas?",
+          "followUpEn": "Who did you dance with?",
+          "stage": "mid",
+          "domain": "music"
+        },
+        {
+          "id": "music-05",
+          "title": "An instrument",
+          "titleEs": "Un instrumento",
+          "prompt": "¿Tocabas algún instrumento o conocías a alguien que lo tocara?",
+          "promptEn": "Did you play an instrument, or did someone you know play one?",
+          "sensoryCue": "El tacto de las cuerdas o las teclas.",
+          "sensoryCueEn": "The feel of strings or keys.",
+          "followUp": "¿Qué canción tocaba esa persona?",
+          "followUpEn": "What song did that person play?",
+          "stage": "mid",
+          "domain": "music"
+        },
+        {
+          "id": "music-06",
+          "title": "A concert",
+          "titleEs": "Un concierto",
+          "prompt": "¿Recuerdas algún concierto o fiesta con música en directo?",
+          "promptEn": "Do you remember a concert or party with live music?",
+          "sensoryCue": "Luces, aplausos y un escenario.",
+          "sensoryCueEn": "Lights, applause, and a stage.",
+          "followUp": "¿Con quién fuiste?",
+          "followUpEn": "Who did you go with?",
+          "stage": "mid",
+          "domain": "music"
+        }
+      ]
+    },
+    {
+      "id": "work",
+      "name": "Work",
+      "nameEs": "Trabajo",
+      "concept": "Daily life and skills",
+      "shape": "toolbox",
+      "color": "#4DABF7",
+      "position": [
+        0.54,
+        1.1,
+        -2.543
+      ],
+      "cards": [
+        {
+          "id": "work-01",
+          "title": "The first job",
+          "titleEs": "El primer trabajo",
+          "prompt": "¿Cuál fue tu primer trabajo o tu primera responsabilidad?",
+          "promptEn": "What was your first job or first responsibility?",
+          "sensoryCue": "Un uniforme, una oficina o una herramienta.",
+          "sensoryCueEn": "A uniform, an office, or a tool.",
+          "followUp": "¿Qué aprendiste allí?",
+          "followUpEn": "What did you learn there?",
+          "stage": "mid",
+          "domain": "work"
+        },
+        {
+          "id": "work-02",
+          "title": "A work friend",
+          "titleEs": "Un compañero de trabajo",
+          "prompt": "¿Qué compañero o compañera de trabajo recuerdas con cariño?",
+          "promptEn": "Which work colleague do you remember fondly?",
+          "sensoryCue": "Una taza de café y una broma compartida.",
+          "sensoryCueEn": "A coffee cup and a shared joke.",
+          "followUp": "¿Qué costumbre teníais juntos?",
+          "followUpEn": "What habit did you share?",
+          "stage": "mid",
+          "domain": "work"
+        },
+        {
+          "id": "work-03",
+          "title": "The daily commute",
+          "titleEs": "El viaje de cada día",
+          "prompt": "¿Cómo ibas al trabajo o a clase cada día?",
+          "promptEn": "How did you travel to work or school each day?",
+          "sensoryCue": "Un autobús, un tren o una bicicleta.",
+          "sensoryCueEn": "A bus, a train, or a bicycle.",
+          "followUp": "¿Qué veías por el camino?",
+          "followUpEn": "What did you see on the way?",
+          "stage": "early",
+          "domain": "work"
+        },
+        {
+          "id": "work-04",
+          "title": "A tool you used",
+          "titleEs": "Una herramienta que usabas",
+          "prompt": "¿Qué herramienta u objeto usabas a diario en tu trabajo?",
+          "promptEn": "Which tool or object did you use every day at work?",
+          "sensoryCue": "El peso en las manos y un sonido repetido.",
+          "sensoryCueEn": "The weight in your hands and a repeated sound.",
+          "followUp": "¿Para qué servía exactamente?",
+          "followUpEn": "What exactly was it used for?",
+          "stage": "mid",
+          "domain": "work"
+        },
+        {
+          "id": "work-05",
+          "title": "A proud moment",
+          "titleEs": "Un momento de orgullo",
+          "prompt": "¿De qué momento de tu trabajo te sientes orgulloso?",
+          "promptEn": "Which moment at work are you proud of?",
+          "sensoryCue": "Un aplauso, una firma o una foto.",
+          "sensoryCueEn": "Applause, a signature, or a photo.",
+          "followUp": "¿Quién estaba contigo?",
+          "followUpEn": "Who was with you?",
+          "stage": "mid",
+          "domain": "work"
+        },
+        {
+          "id": "work-06",
+          "title": "The lunch break",
+          "titleEs": "La pausa del almuerzo",
+          "prompt": "¿Dónde comías o descansabas durante el trabajo?",
+          "promptEn": "Where did you eat or rest during work?",
+          "sensoryCue": "Un banco, un termo y una conversación.",
+          "sensoryCueEn": "A bench, a flask, and a conversation.",
+          "followUp": "¿Qué era lo mejor de esa pausa?",
+          "followUpEn": "What was the best part of that break?",
+          "stage": "early",
+          "domain": "work"
+        }
+      ]
+    },
+    {
+      "id": "garden",
+      "name": "Garden",
+      "nameEs": "Jardín",
+      "concept": "Nature and seasons",
+      "shape": "leaf",
+      "color": "#38D9A9",
+      "position": [
+        1.528,
+        1.15,
+        -2.103
+      ],
+      "cards": [
+        {
+          "id": "garden-01",
+          "title": "The flowers",
+          "titleEs": "Las flores",
+          "prompt": "¿Qué flores recuerdas de un jardín o una ventana?",
+          "promptEn": "Which flowers do you remember from a garden or window?",
+          "sensoryCue": "Un color vivo y olor dulce.",
+          "sensoryCueEn": "A bright colour and a sweet scent.",
+          "followUp": "¿Quién las cuidaba?",
+          "followUpEn": "Who cared for them?",
+          "stage": "early",
+          "domain": "garden"
+        },
+        {
+          "id": "garden-02",
+          "title": "The vegetable patch",
+          "titleEs": "El huerto",
+          "prompt": "¿Había un huerto o una planta que cuidarais?",
+          "promptEn": "Was there a vegetable patch or a plant you cared for?",
+          "sensoryCue": "Tierra en las manos y olor a tomate.",
+          "sensoryCueEn": "Soil on your hands and the smell of tomatoes.",
+          "followUp": "¿Qué se recogía en verano?",
+          "followUpEn": "What did you harvest in summer?",
+          "stage": "mid",
+          "domain": "garden"
+        },
+        {
+          "id": "garden-03",
+          "title": "A tree",
+          "titleEs": "Un árbol",
+          "prompt": "¿Qué árbol recuerdas de tu calle o tu casa?",
+          "promptEn": "Which tree do you remember from your street or home?",
+          "sensoryCue": "Sombra, hojas y el sonido del viento.",
+          "sensoryCueEn": "Shade, leaves, and the sound of wind.",
+          "followUp": "¿Qué hacías bajo ese árbol?",
+          "followUpEn": "What did you do under that tree?",
+          "stage": "early",
+          "domain": "garden"
+        },
+        {
+          "id": "garden-04",
+          "title": "The birds",
+          "titleEs": "Los pájaros",
+          "prompt": "¿Qué pájaros o animales veías en el jardín?",
+          "promptEn": "Which birds or animals did you see in the garden?",
+          "sensoryCue": "Un canto al amanecer y una visita al comedero.",
+          "sensoryCueEn": "Dawn song and a visit to the feeder.",
+          "followUp": "¿Los oías siempre a la misma hora?",
+          "followUpEn": "Did you hear them at the same time each day?",
+          "stage": "mid",
+          "domain": "garden"
+        },
+        {
+          "id": "garden-05",
+          "title": "The weather",
+          "titleEs": "El tiempo",
+          "prompt": "¿Qué tiempo recuerdas de una estación concreta?",
+          "promptEn": "What weather do you remember from a particular season?",
+          "sensoryCue": "Lluvia en el cristal o sol en la cara.",
+          "sensoryCueEn": "Rain on the window or sun on your face.",
+          "followUp": "¿Qué te gustaba hacer con ese tiempo?",
+          "followUpEn": "What did you like to do in that weather?",
+          "stage": "early",
+          "domain": "garden"
+        },
+        {
+          "id": "garden-06",
+          "title": "The bench",
+          "titleEs": "El banco",
+          "prompt": "¿Dónde te sentabas a descansar al aire libre?",
+          "promptEn": "Where did you sit and rest outdoors?",
+          "sensoryCue": "Madera, sombra y una vista tranquila.",
+          "sensoryCueEn": "Wood, shade, and a calm view.",
+          "followUp": "¿Con quién compartías ese banco?",
+          "followUpEn": "Who shared that bench with you?",
+          "stage": "mid",
+          "domain": "garden"
+        }
+      ]
+    },
+    {
+      "id": "travel",
+      "name": "Travel",
+      "nameEs": "Viajes",
+      "concept": "Places and journeys",
+      "shape": "suitcase",
+      "color": "#FFA94D",
+      "position": [
+        2.252,
+        1.15,
+        -1.3
+      ],
+      "cards": [
+        {
+          "id": "travel-01",
+          "title": "The first trip",
+          "titleEs": "El primer viaje",
+          "prompt": "¿Cuál fue el primer viaje que recuerdas?",
+          "promptEn": "What is the first trip you remember?",
+          "sensoryCue": "Una maleta, un billete y una llegada.",
+          "sensoryCueEn": "A suitcase, a ticket, and an arrival.",
+          "followUp": "¿Qué fue lo primero que viste al llegar?",
+          "followUpEn": "What was the first thing you saw on arrival?",
+          "stage": "early",
+          "domain": "travel"
+        },
+        {
+          "id": "travel-02",
+          "title": "The seaside",
+          "titleEs": "La costa",
+          "prompt": "¿Qué recuerdas de un día junto al mar?",
+          "promptEn": "What do you remember from a day by the sea?",
+          "sensoryCue": "Olas, sal y un paseo largo.",
+          "sensoryCueEn": "Waves, salt, and a long walk.",
+          "followUp": "¿Con quién estabas?",
+          "followUpEn": "Who were you with?",
+          "stage": "mid",
+          "domain": "travel"
+        },
+        {
+          "id": "travel-03",
+          "title": "The mountains",
+          "titleEs": "La montaña",
+          "prompt": "¿Recuerdas un paisaje de montaña o un pueblo?",
+          "promptEn": "Do you remember a mountain landscape or a village?",
+          "sensoryCue": "Aire frío, piedra y silencio.",
+          "sensoryCueEn": "Cold air, stone, and silence.",
+          "followUp": "¿Qué te sorprendió de ese lugar?",
+          "followUpEn": "What surprised you about that place?",
+          "stage": "mid",
+          "domain": "travel"
+        },
+        {
+          "id": "travel-04",
+          "title": "A train or plane",
+          "titleEs": "Un tren o un avión",
+          "prompt": "¿Recuerdas un viaje en tren o en avión?",
+          "promptEn": "Do you remember a journey by train or plane?",
+          "sensoryCue": "Una ventanilla y el ruido del motor.",
+          "sensoryCueEn": "A window and the sound of the engine.",
+          "followUp": "¿A dónde ibas?",
+          "followUpEn": "Where were you going?",
+          "stage": "mid",
+          "domain": "travel"
+        },
+        {
+          "id": "travel-05",
+          "title": "A souvenir",
+          "titleEs": "Un recuerdo de viaje",
+          "prompt": "¿Qué objeto guardas de un viaje?",
+          "promptEn": "Which object do you keep from a trip?",
+          "sensoryCue": "Una piedra, una postal o una taza.",
+          "sensoryCueEn": "A stone, a postcard, or a cup.",
+          "followUp": "¿Dónde está ahora?",
+          "followUpEn": "Where is it now?",
+          "stage": "early",
+          "domain": "travel"
+        },
+        {
+          "id": "travel-06",
+          "title": "A postcard",
+          "titleEs": "Una postal",
+          "prompt": "¿Qué postal o foto de un viaje te gusta mirar?",
+          "promptEn": "Which postcard or travel photo do you like to look at?",
+          "sensoryCue": "Un sello, una firma y un mensaje corto.",
+          "sensoryCueEn": "A stamp, a signature, and a short message.",
+          "followUp": "¿Quién te la envió?",
+          "followUpEn": "Who sent it to you?",
+          "stage": "mid",
+          "domain": "travel"
+        }
+      ]
+    }
+  ]
+};
