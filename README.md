@@ -1,5 +1,7 @@
 # Memory Place
 
+> **GitHub topics (pendientes de añadir):** `snap-spectacles`, `lens-studio`, `ar`, `accessibility`, `alzheimers`, `hackathon`
+
 **A reminiscence space for Snap Spectacles, used together with a caregiver.**
 Built for the [Learn AR with SPECS](https://learn-specs.devpost.com/) hackathon with Lens Studio, CLAD and the Lens Studio MCP.
 
