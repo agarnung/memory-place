@@ -65,7 +65,7 @@ More detail: [`app/README.md`](app/README.md).
 ## Demo
 
 - **Code:** <https://github.com/agarnung/memory-place> (MIT)
-- **Video:** <YOUTUBE_URL> (2:36, public on YouTube)
+- **Video:** <https://youtu.be/szqLn1_Asz8> (2:37, public on YouTube)
 
 ## Privacy, safety and provenance
 
