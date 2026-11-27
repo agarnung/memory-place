@@ -12,6 +12,7 @@ Thumbs.db
 /SUBMISSION.md
 /scripts/
 /.claude/
+app/devpost/video-script.md
 
 # Agent tooling generated inside the Lens Studio project
 app/.virtual-scene.json

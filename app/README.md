@@ -42,7 +42,7 @@ Assets/Placeholders/     primitive meshes and materials for the six places
 Assets/Fonts/            Atkinson Hyperlegible
 tests/core.test.mjs      12 Node tests for the state machine
 tools/                   validate, generate and render the dataset
-devpost/                 brief, principles, scene plan, test plan, data, provenance, video script
+devpost/                 brief, principles, scene plan, test plan, data, provenance
 ```
 
 ## Validate and test
