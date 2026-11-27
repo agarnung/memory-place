@@ -1,6 +1,6 @@
 # Memory Place
 
-> **GitHub topics (pendientes de añadir):** `snap-spectacles`, `lens-studio`, `ar`, `accessibility`, `alzheimers`, `hackathon`
+> **GitHub topics:** `snap-spectacles`, `lens-studio`, `ar`, `accessibility`, `alzheimers`, `hackathon`
 
 **A reminiscence space for Snap Spectacles, used together with a caregiver.**
 Built for the [Learn AR with SPECS](https://learn-specs.devpost.com/) hackathon with Lens Studio, CLAD and the Lens Studio MCP.
@@ -61,6 +61,11 @@ Older adults living with mild cognitive impairment or Alzheimer's, always with a
 4. Optional: `cd app && npm test` runs the 12 state-machine tests. The LEAF panel runs the 8 scene scenarios.
 
 More detail: [`app/README.md`](app/README.md).
+
+## Demo
+
+- **Code:** <https://github.com/agarnung/memory-place> (MIT)
+- **Video:** <YOUTUBE_URL> (2:36, public on YouTube)
 
 ## Privacy, safety and provenance
 
